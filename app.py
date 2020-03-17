@@ -16,6 +16,9 @@ mongo = PyMongo(app)
 def get_tasks():
     return render_template("games.html", games=mongo.db.games.find())
     
+@app.route('/add_game')
+def add_game():
+    return render_template("addgame.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
