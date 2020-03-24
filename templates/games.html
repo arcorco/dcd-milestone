@@ -5,21 +5,29 @@
     <div class="carousel-item red white-text">
         <div class="row">
             <div class="col s6">
-            <h1>{{game.game_name}}</h1>
-            <ul>
-                <li>
-                    <h5 class="white-text"><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</h5>
-                </li>
-                <li>
-                    <h5 class="white-text"><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</h5>
-                </li>
-                <li>
-                    <h5 class="white-text"><i class="material-icons">child_care</i> Age range: {{game.age_range}}</h5>
-                </li>
-            </ul>
+                <h1>{{game.game_name}}</h1>
+                <ul>
+                    <li>
+                        <h5 class="white-text"><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</h5>
+                    </li>
+                    <li>
+                        <h5 class="white-text"><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</h5>
+                    </li>
+                    <li>
+                        <h5 class="white-text"><i class="material-icons">child_care</i> Age range: {{game.age_range}}</h5>
+                    </li>
+                </ul>
             </div>
             <div class="col s6">
                 <p class="white-text">{{game.game_description}}</p>
+                <div class="row">
+                    <div class="col s6">
+                        <a href="{{url_for('edit_game', game_id=game._id)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>EDIT</a>
+                    </div>
+                    <div class="col s6">
+                        <a href="{{url_for('delete_game', game_id=game._id)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>DELETE</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

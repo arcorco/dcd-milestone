@@ -31,11 +31,42 @@ def insert_game():
     players = "%s-%s" % (min_players, max_players)
     new_game.update( {'number_of_players' : players} )
     new_game.update( {'age_range' : age} )
-    new_game.pop('number_of_players_min')
-    new_game.pop('number_of_players_max')
-    
     games.insert_one(new_game)
     return redirect(url_for('get_games'))
+    
+@app.route('/edit_game/<game_id>')
+def edit_game(game_id):
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template('editgame.html', game=the_game)
+
+@app.route('/update_game/<game_id>', methods=["POST"])
+def update_game(game_id):
+    games = mongo.db.games
+    games.update( {'_id': ObjectId(game_id)},
+    {   
+        'game_name':request.form.get('game_name'),
+        'game_description':request.form.get('game_description'),
+        'manufacturer':request.form.get('manufacturer'),
+        'number_of_players_min':request.form.get('number_of_players_min'),
+        'number_of_players_max':request.form.get('number_of_players_max'),
+        'number_of_players':"%s-%s" % (request.form.get('number_of_players_min'), request.form.get('number_of_players_max')),
+        'age_range': "%s+" % (request.form.get('age_range'))
+    })
+    return redirect(url_for('get_games'))
+
+@app.route('/delete_game/<game_id>')
+def delete_game(game_id):
+    mongo.db.games.remove({'_id': ObjectId(game_id)})
+    return redirect(url_for('get_games'))
+    
+@app.route('/get_reviews')
+def get_reviews():
+    return render_template('reviews.html', reviews=mongo.db.reviews.find())
+    
+@app.route('/edit_review/<review_id>')
+def edit_review(review_id):
+    return render_template('editreview.html', review=mongo.db.reviews.find_one({'_id': ObjectId(review_id)}))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
