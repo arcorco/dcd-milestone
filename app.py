@@ -63,6 +63,13 @@ def delete_game(game_id):
 def get_reviews():
     return render_template('reviews.html', reviews=mongo.db.reviews.find())
     
+@app.route('/add_review')
+def add_review():
+    return render_template('addreview.html', games=mongo.db.games.find())
+    
+#@app.route('/insert_review')
+#def insert_review():
+    
 @app.route('/edit_review/<review_id>')
 def edit_review(review_id):
     return render_template('editreview.html', review=mongo.db.reviews.find_one({'_id': ObjectId(review_id)}))
