@@ -2,7 +2,7 @@
 
 <h3>Add Review</h3>
 <div class="row">
-    <form action=# method="POST" class="col s12">
+    <form action="{{url_for('insert_review')}}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
@@ -18,14 +18,14 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">format_align_justify</i>
-                <textarea id="review" class="materialize-textarea"></textarea>
+                <textarea id="review" name="review" class="materialize-textarea validate"></textarea>
                 <label for="review">Review</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">work</i>
-                <select>
+                <select id="rating" name="rating">
       <option value="" disabled selected>Choose your star rating out of 5:</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -41,7 +41,7 @@
                 <i class="material-icons prefix small">work</i>
                 <label>
       I don't recommend
-      <input type="checkbox">
+      <input id="recommended" name="recommended" type="checkbox">
       <span class="lever"></span>
       I do recommend
     </label>

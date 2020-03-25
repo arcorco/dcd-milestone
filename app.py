@@ -67,8 +67,18 @@ def get_reviews():
 def add_review():
     return render_template('addreview.html', games=mongo.db.games.find())
     
-#@app.route('/insert_review')
-#def insert_review():
+@app.route('/insert_review', methods=['POST'])
+def insert_review():
+    reviews = mongo.db.reviews
+    new_review = request.form.to_dict()
+    recommended = new_review.get("recommended")
+    if recommended == "on":
+        new_review.update( {'recommended' : 'Yes'} )
+    else:
+        new_review.update( {'recommended' : 'No' })
+    reviews.insert_one(new_review)
+    return redirect(url_for('get_reviews'))
+    
     
 @app.route('/edit_review/<review_id>')
 def edit_review(review_id):
