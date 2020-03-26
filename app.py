@@ -80,9 +80,10 @@ def insert_review():
     return redirect(url_for('get_reviews'))
     
     
-@app.route('/edit_review/<review_id>')
+@app.route('/edit_game/<game_id>')
 def edit_review(review_id):
-    return render_template('editreview.html', review=mongo.db.reviews.find_one({'_id': ObjectId(review_id)}))
+    the_review = mongo.db.games.find_one({"_id": ObjectId(review_id)})
+    return render_template('editreview.html', review=the_review)
 
 
 if __name__ == "__main__":
