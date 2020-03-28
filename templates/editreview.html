@@ -2,14 +2,18 @@
 
 <h3>Edit Review</h3>
 <div class="row">
-    <form action="{{url_for('update_review')}}" method="POST" class="col s12">
+    <form action="{{url_for('update_review', review_id=review._id)}}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
                 <select id="game_name" name="game_name">
                   <option value="" disabled selected>Choose Game</option>
                   {% for game in games %}
+                      {% if game.game_name == review.game_name %}
+                      <option value="{{game.game_name}}" selected >{{game.game_name}}</option>
+                      {% else %}
                       <option value="{{game.game_name}}">{{game.game_name}}</option>
+                      {% endif %}
                   {% endfor %}
                 </select>
                 <label>Game Name</label>
@@ -18,7 +22,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">format_align_justify</i>
-                <textarea id="review" name="review" class="materialize-textarea validate"></textarea>
+                <textarea id="review" name="review" class="materialize-textarea validate" disabled >{{review.review}}</textarea>
                 <label for="review">Review</label>
             </div>
         </div>
@@ -26,12 +30,14 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">work</i>
                 <select id="rating" name="rating">
-      <option value="" disabled selected>Choose your star rating out of 5:</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+      <option value="" disabled selected >Choose your star rating out of 5:</option>
+      {% for i in range(1, 6) %}
+      {% if i|string == review.rating %}
+          <option value="{{ i }}" selected >{{ i }}</option>
+          {% else %}
+          <option value="{{ i }}">{{ i }}</option>
+         {% endif %}
+      {% endfor %}
     </select>
                 <label>Rating</label>
             </div>
@@ -41,7 +47,11 @@
                 <i class="material-icons prefix small">work</i>
                 <label>
       I don't recommend
-      <input id="recommended" name="recommended" type="checkbox">
+      {% if review.recommended == "yes" %}
+      <input id="recommended" name="recommended" type="checkbox" checked>
+      {% else %}
+      <input id="recommended" name="recommended" type="checkbox" checked>
+      {% endif %}
       <span class="lever"></span>
       I do recommend
     </label>
@@ -49,7 +59,7 @@
         </div>
 
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Review
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Review
                 <i class="material-icons right">playlist_add</i>
              </button>
         </div>

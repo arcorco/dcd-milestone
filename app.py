@@ -79,11 +79,33 @@ def insert_review():
     reviews.insert_one(new_review)
     return redirect(url_for('get_reviews'))
     
-    
-@app.route('/edit_game/<game_id>')
+@app.route('/edit_review/<review_id>')
 def edit_review(review_id):
-    the_review = mongo.db.games.find_one({"_id": ObjectId(review_id)})
-    return render_template('editreview.html', review=the_review)
+    the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template('editreview.html', review=the_review, games=mongo.db.games.find())
+    
+@app.route('/update_review/<review_id>', methods=["POST"])
+def update_review(review_id):
+    reviews = mongo.db.reviews
+    updated_review = request.form.to_dict()
+    recommended = updated_review.get("recommended")
+    if recommended == "on":
+        reviews.update({'_id':ObjectId(review_id)},
+        {
+            'game_name':request.form.get('game_name'),
+            'review':request.form.get('review'),
+            'rating':request.form.get('rating'),
+            'recommended': "Yes"
+        })
+    else:
+        reviews.update({'_id':ObjectId(review_id)},
+        {
+            'game_name':request.form.get('game_name'),
+            'review':request.form.get('review'),
+            'rating':request.form.get('rating'),
+            'recommended': "No"
+        })
+    return redirect(url_for('get_reviews'))
 
 
 if __name__ == "__main__":
