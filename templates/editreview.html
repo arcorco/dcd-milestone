@@ -22,7 +22,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">format_align_justify</i>
-                <textarea id="review" name="review" class="materialize-textarea validate" disabled >{{review.review}}</textarea>
+                <textarea id="review" name="review" class="materialize-textarea validate">{{review.review}}</textarea>
                 <label for="review">Review</label>
             </div>
         </div>
@@ -47,10 +47,10 @@
                 <i class="material-icons prefix small">work</i>
                 <label>
       I don't recommend
-      {% if review.recommended == "yes" %}
+      {% if review.recommended == "Yes" %}
       <input id="recommended" name="recommended" type="checkbox" checked>
       {% else %}
-      <input id="recommended" name="recommended" type="checkbox" checked>
+      <input id="recommended" name="recommended" type="checkbox" >
       {% endif %}
       <span class="lever"></span>
       I do recommend
