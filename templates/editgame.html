@@ -2,7 +2,7 @@
 
 <h3>Edit Game</h3>
 <div class="row">
-  <form action="{{url_for('update_game', game_id=game._id)}}" method="POST" class="col s12">
+  <form action="{{url_for('update_game', game_id=game._id)}}" method="POST" class="col s12" enctype="multipart/form-data">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">create</i>
@@ -42,6 +42,17 @@
         <i class="material-icons prefix">child_care</i>
         <input id="age_range" name="age_range" type="text" class="validate" value="{{game.age_range}}">
         <label for="age_range">Minimum Age</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="game_image" id="game_image">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" value="{{game.game_image_name}}">
+        </div>
       </div>
     </div>
     <div class="row">

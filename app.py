@@ -12,6 +12,11 @@ app.config["MONGO_URI"] = 'mongodb+srv://first_user:WG9zKqgDwfDTHNa@myfirstclust
 mongo = PyMongo(app)
 
 @app.route('/')
+
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
+
 @app.route('/get_games')
 def get_games():
     return render_template('games.html', games=mongo.db.games.find())
@@ -22,15 +27,16 @@ def add_game():
 
 @app.route('/insert_game', methods=['POST'])
 def insert_game():
+    if 'game_image' in request.files:
+        game_image = request.files['game_image']
+        mongo.save_file(game_image.filename, game_image)
     games = mongo.db.games
     new_game = request.form.to_dict()
     min_players = new_game.get("number_of_players_min")
     max_players = new_game.get("number_of_players_max")
-    min_age = new_game.get("age_range")
-    age = "%s+" % min_age
     players = "%s-%s" % (min_players, max_players)
     new_game.update( {'number_of_players' : players} )
-    new_game.update( {'age_range' : age} )
+    new_game.update( {'game_image_name' : game_image.filename})
     games.insert_one(new_game)
     return redirect(url_for('get_games'))
     
@@ -41,17 +47,21 @@ def edit_game(game_id):
 
 @app.route('/update_game/<game_id>', methods=["POST"])
 def update_game(game_id):
+    if 'game_image' in request.files:
+        game_image = request.files['game_image']
+        mongo.save_file(game_image.filename, game_image)
     games = mongo.db.games
     games.update( {'_id': ObjectId(game_id)},
-    {   
+    { '$set': { 
         'game_name':request.form.get('game_name'),
         'game_description':request.form.get('game_description'),
         'manufacturer':request.form.get('manufacturer'),
         'number_of_players_min':request.form.get('number_of_players_min'),
         'number_of_players_max':request.form.get('number_of_players_max'),
         'number_of_players':"%s-%s" % (request.form.get('number_of_players_min'), request.form.get('number_of_players_max')),
-        'age_range': "%s+" % (request.form.get('age_range'))
-    })
+        'age_range': request.form.get('age_range'),
+        'game_image_name': game_image.filename
+    }})
     return redirect(url_for('get_games'))
 
 @app.route('/delete_game/<game_id>')
