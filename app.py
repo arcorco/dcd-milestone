@@ -51,17 +51,31 @@ def update_game(game_id):
         game_image = request.files['game_image']
         mongo.save_file(game_image.filename, game_image)
     games = mongo.db.games
-    games.update( {'_id': ObjectId(game_id)},
-    { '$set': { 
-        'game_name':request.form.get('game_name'),
-        'game_description':request.form.get('game_description'),
-        'manufacturer':request.form.get('manufacturer'),
-        'number_of_players_min':request.form.get('number_of_players_min'),
-        'number_of_players_max':request.form.get('number_of_players_max'),
-        'number_of_players':"%s-%s" % (request.form.get('number_of_players_min'), request.form.get('number_of_players_max')),
-        'age_range': request.form.get('age_range'),
-        'game_image_name': game_image.filename
-    }})
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    game_image_name = the_game.get('game_image_name')
+    if game_image_name == "":
+        games.update( {'_id': ObjectId(game_id)},
+        { '$set': { 
+            'game_name':request.form.get('game_name'),
+            'game_description':request.form.get('game_description'),
+            'manufacturer':request.form.get('manufacturer'),
+            'number_of_players_min':request.form.get('number_of_players_min'),
+            'number_of_players_max':request.form.get('number_of_players_max'),
+            'number_of_players':"%s-%s" % (request.form.get('number_of_players_min'), request.form.get('number_of_players_max')),
+            'age_range': request.form.get('age_range'),
+            'game_image_name': game_image.filename
+        }})
+    else:
+        games.update_one( {'_id': ObjectId(game_id)},
+        { '$set': { 
+            'game_name':request.form.get('game_name'),
+            'game_description':request.form.get('game_description'),
+            'manufacturer':request.form.get('manufacturer'),
+            'number_of_players_min':request.form.get('number_of_players_min'),
+            'number_of_players_max':request.form.get('number_of_players_max'),
+            'number_of_players':"%s-%s" % (request.form.get('number_of_players_min'), request.form.get('number_of_players_max')),
+            'age_range': request.form.get('age_range')
+        }})
     return redirect(url_for('get_games'))
 
 @app.route('/delete_game/<game_id>')
