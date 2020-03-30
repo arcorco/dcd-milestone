@@ -34,6 +34,9 @@
                         <a href="{{url_for('delete_game', game_id=game._id)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>DELETE</a>
                     </div>
                 </div>
+                <div class="row">
+                    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>REVIEWS</a>
+                </div>
             </div>
         </div>
     </div>
