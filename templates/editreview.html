@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">work</i>
+                <i class="material-icons prefix">star</i>
                 <select id="rating" name="rating">
       <option value="" disabled selected >Choose your star rating out of 5:</option>
       {% for i in range(1, 6) %}
@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="switch">
-                <i class="material-icons prefix small">work</i>
+                <i class="material-icons prefix small">thumbs_up_down</i>
                 <label>
       I don't recommend
       {% if review.recommended == "Yes" %}

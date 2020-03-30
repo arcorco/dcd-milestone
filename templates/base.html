@@ -18,6 +18,15 @@
                     <li><a href="{{url_for('get_games')}}">All Games</a></li>
                     <li><a href="{{url_for('add_game')}}">Add Game</a></li>
                     <li><a href="{{url_for('add_review')}}">Add Review</a></li>
+                    <li>
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
 
                 <ul class="side-nav" id="mobile-demo">
@@ -40,31 +49,27 @@
             $('input#game_description').characterCounter();
 
             $('select').material_select();
-            
+
             $('.button-collapse').sideNav();
-            
+
             $('.materialboxed').materialbox();
-            
+
             $('.tooltipped').tooltip();
-            
-            function rating_validation()
-            {
-                if(document.getElementById("rating").value == "")
-                {
+
+            function rating_validation() {
+                if (document.getElementById("rating").value == "") {
                     alert("Please select a rating out of 5");
                     return false;
                 }
             }
-            
-            function game_name_validation()
-            {
-                if(document.getElementById("game_name").value == "")
-                {
+
+            function game_name_validation() {
+                if (document.getElementById("game_name").value == "") {
                     alert("Please select a game");
                     return false;
                 }
             }
-            
+
             document.getElementById("add-review").onclick = rating_validation;
             document.getElementById("add-review").onclick = game_name_validation;
             document.getElementById("edit-review").onclick = rating_validation;
