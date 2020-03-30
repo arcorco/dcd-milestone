@@ -6,7 +6,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">create</i>
-        <input id="game_name" name="game_name" type="text" class="validate">
+        <input id="game_name" name="game_name" type="text" class="validate" required>
         <label for="game_name">Game Name</label>
       </div>
     </div>
@@ -46,8 +46,8 @@
     </div>
     <div class="row">
       <div class="file-field input-field">
-        <div class="btn">
-          <span>File</span>
+        <div class="btn tooltipped" data-position="top" data-tooltip="If no image is provided, a default image will be used.">
+          <span>ADD IMAGE</span>
           <input type="file" name="game_image" id="game_image">
         </div>
         <div class="file-path-wrapper">

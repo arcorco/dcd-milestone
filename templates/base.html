@@ -44,6 +44,31 @@
             $('.button-collapse').sideNav();
             
             $('.materialboxed').materialbox();
+            
+            $('.tooltipped').tooltip();
+            
+            function rating_validation()
+            {
+                if(document.getElementById("rating").value == "")
+                {
+                    alert("Please select a rating out of 5");
+                    return false;
+                }
+            }
+            
+            function game_name_validation()
+            {
+                if(document.getElementById("game_name").value == "")
+                {
+                    alert("Please select a game");
+                    return false;
+                }
+            }
+            
+            document.getElementById("add-review").onclick = rating_validation;
+            document.getElementById("add-review").onclick = game_name_validation;
+            document.getElementById("edit-review").onclick = rating_validation;
+            document.getElementById("edit-review").onclick = game_name_validation;
 
         });
     </script>
