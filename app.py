@@ -1,9 +1,13 @@
 import os
+import statistics
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+
+USER=os.environ.get('USERNAME')
+PASS=os.environ.get('PASS')
 
 app.config["MONGO_DNAME"] = 'game_review'
 app.config["MONGO_URI"] = 'mongodb+srv://first_user:WG9zKqgDwfDTHNa@myfirstcluster-74ub4.mongodb.net/game_review?retryWrites=true&w=majority'
@@ -93,6 +97,7 @@ def add_review():
     
 @app.route('/insert_review', methods=['POST'])
 def insert_review():
+    games = mongo.db.games
     reviews = mongo.db.reviews
     new_review = request.form.to_dict()
     recommended = new_review.get("recommended")
@@ -101,6 +106,13 @@ def insert_review():
     else:
         new_review.update( {'recommended' : 'No' })
     reviews.insert_one(new_review)
+    ratings = []
+    for review in reviews.find():
+        if review['game_name'] == new_review.get("game_name"):
+            ratings.append(int(review['rating']))
+    avg_rating = round(statistics.mean(ratings), 1)
+    games.update({"game_name": new_review.get("game_name")},
+    {"$set": {"avg_rating": avg_rating}})
     return redirect(url_for('get_reviews'))
     
 @app.route('/edit_review/<review_id>')
@@ -110,6 +122,7 @@ def edit_review(review_id):
     
 @app.route('/update_review/<review_id>', methods=["POST"])
 def update_review(review_id):
+    games = mongo.db.games
     reviews = mongo.db.reviews
     updated_review = request.form.to_dict()
     recommended = updated_review.get("recommended")
@@ -129,6 +142,13 @@ def update_review(review_id):
             'rating':request.form.get('rating'),
             'recommended': "No"
         })
+    ratings = []
+    for review in reviews.find():
+        if review['game_name'] == updated_review.get("game_name"):
+            ratings.append(int(review['rating']))
+    avg_rating = round(statistics.mean(ratings), 1)
+    games.update({"game_name": updated_review.get("game_name")},
+    {"$set": {"avg_rating": avg_rating}})
     return redirect(url_for('get_reviews'))
 
 @app.route('/delete_review/<review_id>')
