@@ -17,14 +17,13 @@ app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/home')
+def home():
+    return render_template('homepage.html', games=mongo.db.games.find())
 
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
-    
-@app.route('/home')
-def home():
-    return render_template('homepage.html', games=mongo.db.games.find())
 
 @app.route('/get_games')
 def get_games():
