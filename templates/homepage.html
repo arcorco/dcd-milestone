@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col s12">
                 <h1>{{game.game_name}}</h1>
-                        <h5 class="white-text"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
+                <h5 class="white-text"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
                 <p class="white-text">{{game.game_description}}</p>
                 {% if game.game_image_name == "" %}
                 <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="350"></img>
@@ -21,7 +21,15 @@
         </div>
     </div>
     {% endfor %}
-    
 
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+    <iframe style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-apglr/embed/charts?id=cc1cb915-37b6-41cb-956a-b87ac3843601&theme=light"></iframe>
+</div>
+<div class="col s6">
+    <iframe style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-apglr/embed/charts?id=1fd2486b-d0e1-414d-bd71-1d03d03a220d&theme=light"></iframe>
+</div>
 </div>
 {% endblock %}
