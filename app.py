@@ -6,10 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-USER=os.environ.get('USERNAME')
-PASS=os.environ.get('PASS')
-
-app.config["MONGO_DNAME"] = 'game_review'
+app.config["MONGO_DBNAME"] = 'game_review'
 app.config["MONGO_URI"] = 'mongodb+srv://first_user:WG9zKqgDwfDTHNa@myfirstcluster-74ub4.mongodb.net/game_review?retryWrites=true&w=majority'
 #environment variable for username and password
 
@@ -164,7 +161,7 @@ def delete_review(review_id):
 def game_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name": game_name}), game=mongo.db.games.find_one({"game_name": game_name}))
     
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
