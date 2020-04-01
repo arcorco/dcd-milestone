@@ -1,2 +1,4 @@
 .git/
 .c9/
+/env.py
+__pycache__/
