@@ -91,10 +91,6 @@ def delete_game(game_id):
     mongo.db.games.remove({'_id': ObjectId(game_id)})
     return redirect(url_for('get_games'))
     
-@app.route('/get_reviews')
-def get_reviews():
-    return render_template('reviews.html', reviews=mongo.db.reviews.find())
-    
 @app.route('/add_review')
 def add_review():
     return render_template('addreview.html', games=mongo.db.games.find())
@@ -117,7 +113,7 @@ def insert_review():
     avg_rating = round(statistics.mean(ratings), 1)
     games.update({"game_name": new_review.get("game_name")},
     {"$set": {"avg_rating": avg_rating}})
-    return redirect(url_for('get_reviews'))
+    return redirect(url_for('get_games'))
     
 @app.route('/edit_review/<review_id>')
 def edit_review(review_id):
@@ -153,12 +149,13 @@ def update_review(review_id):
     avg_rating = round(statistics.mean(ratings), 1)
     games.update({"game_name": updated_review.get("game_name")},
     {"$set": {"avg_rating": avg_rating}})
-    return redirect(url_for('get_reviews'))
+    return redirect(url_for('get_games'))
 
 @app.route('/delete_review/<review_id>')
 def delete_review(review_id):
+    deleted_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
-    return redirect(url_for('get_reviews'))
+    return redirect(url_for('get_games'))
     
 @app.route('/game_review/<game_name>')
 def game_review(game_name):

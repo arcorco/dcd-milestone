@@ -1,57 +1,57 @@
 {% extends 'base.html'%} {% block content %}
-
-<h3>Add Review</h3>
-<div class="row">
-    <form action="{{url_for('insert_review')}}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <select id="game_name" name="game_name" required>
+<div class="container form-container">
+    <h3>Add Review</h3>
+    <div class="row">
+        <form action="{{url_for('insert_review')}}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="game_name" name="game_name" required>
                   <option value="" disabled selected>Choose Game</option>
                   {% for game in games %}
                       <option value="{{game.game_name}}">{{game.game_name}}</option>
                   {% endfor %}
                 </select>
-                <label>Game Name</label>
+                    <label>Game Name</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">format_align_justify</i>
-                <textarea id="review" name="review" class="materialize-textarea validate" required></textarea>
-                <label for="review">Review</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">format_align_justify</i>
+                    <textarea id="review" name="review" class="materialize-textarea validate" required></textarea>
+                    <label for="review">Review</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">star</i>
-                <select id="rating" name="rating" required>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">star</i>
+                    <select id="rating" name="rating" required>
       <option value="" disabled selected>Choose your star rating out of 5:</option>
       {% for i in range(1, 6) %}
           <option value="{{ i }}">{{ i }}</option>
       {% endfor %}
     </select>
-                <label>Rating</label>
+                    <label>Rating</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="switch">
-                <i class="material-icons prefix small">thumbs_up_down</i>
-                <label>
+            <div class="row">
+                <div class="switch">
+                    <i class="material-icons prefix small">thumbs_up_down</i>
+                    <label>
       I don't recommend
       <input id="recommended" name="recommended" type="checkbox">
       <span class="lever"></span>
       I do recommend
     </label>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" id="add-review">Add Review
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit" id="add-review">Add Review
                 <i class="material-icons right">playlist_add</i>
              </button>
-        </div>
-    </form>
+            </div>
+        </form>
+    </div>
 </div>
-
 {% endblock %}

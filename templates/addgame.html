@@ -1,68 +1,69 @@
 {% extends 'base.html'%} {% block content %}
-
-<h3>Add Game</h3>
-<div class="row">
-  <form action="{{url_for('insert_game')}}" method="POST" class="col s12" enctype="multipart/form-data">
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">create</i>
-        <input id="game_name" name="game_name" type="text" class="validate" required>
-        <label for="game_name">Game Name</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">format_align_justify</i>
-        <input id="game_description" name="game_description" type="text" class="validate" data-length="120" />
-        <label for="game_description">Game Description</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">work</i>
-        <input id="manufacturer" name="manufacturer" type="text" class="validate">
-        <label for="manufacturer">Manufacturer</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">person</i>
-        <input name="number_of_players_min" id="number_of_players_min" type="text" class="validate">
-        <label for="number_of_players_min">Minimum Number of Players</label>
-      </div>
-
-      <div class="input-field col s6">
-        <i class="material-icons prefix">group</i>
-        <input id="number_of_players_max" name="number_of_players_max" type="text" class="validate">
-        <label for="number_of_players_max">Maximum Number of Players</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">child_care</i>
-        <input id="age_range" name="age_range" type="text" class="validate">
-        <label for="age_range">Minimum Age</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="file-field input-field">
-        <div class="btn tooltipped" data-position="top" data-tooltip="If no image is provided, a default image will be used.">
-          <i class="material-icons right">add_a_photo</i>
-          <span>ADD IMAGE</span>
-          <input type="file" name="game_image" id="game_image">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
+<div class="container form-container">
+  <h3>Add Game</h3>
+  <div class="row">
+    <form action="{{url_for('insert_game')}}" method="POST" class="col s12" enctype="multipart/form-data">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <input id="game_name" name="game_name" type="text" class="validate" required>
+          <label for="game_name">Game Name</label>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <button class="btn waves-effect waves-light" type="submit">Add Game
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">format_align_justify</i>
+          <input id="game_description" name="game_description" type="text" class="validate" data-length="120" />
+          <label for="game_description">Game Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">work</i>
+          <input id="manufacturer" name="manufacturer" type="text" class="validate">
+          <label for="manufacturer">Manufacturer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person</i>
+          <input name="number_of_players_min" id="number_of_players_min" type="text" class="validate">
+          <label for="number_of_players_min">Minimum Number of Players</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">group</i>
+          <input id="number_of_players_max" name="number_of_players_max" type="text" class="validate">
+          <label for="number_of_players_max">Maximum Number of Players</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">child_care</i>
+          <input id="age_range" name="age_range" type="text" class="validate">
+          <label for="age_range">Minimum Age</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="file-field input-field">
+          <div class="btn tooltipped" data-position="top" data-tooltip="If no image is provided, a default image will be used.">
+            <i class="material-icons right">add_a_photo</i>
+            <span>ADD IMAGE</span>
+            <input type="file" name="game_image" id="game_image">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit">Add Game
     <i class="material-icons right">send</i>
   </button>
-    </div>
+      </div>
 
-  </form>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

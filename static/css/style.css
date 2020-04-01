@@ -1,8 +1,51 @@
+/*----------------------------------Generally applicable styles---*/
+.underline {
+    text-decoration: underline;
+}
+
+h1 {
+    color:#ffffff;
+}
+
+iframe {
+    border: solid 2px black;
+}
+
+.game-carousel {
+    padding-top: 20px;
+}
+
+.slick-arrow {
+    text-transform: uppercase;
+    color: #ff8a65; 
+    border-radius: 5px;
+}
+
 .game-image {
     border: solid 3px black;
     margin: auto;
 }
 
 .review-div {
+    border: solid 3px black;
+    background-color: #ffccbc;
+}
+
+.review-button {
+    margin-top: 30px;
+}
+
+.rating {
+    color: #fdd835;
+}
+
+.divider {
+    margin-bottom: 23px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
     border: solid 3px black;
 }

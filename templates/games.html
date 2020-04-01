@@ -1,47 +1,51 @@
 {% extends 'base.html' %} {% block content %} {% for game in games %}
-<div class="red white-text">
+<div class="deep-orange lighten-1 white-text">
     <div class="row">
-        <div class="col s6">
-            <h1>{{game.game_name}}</h1>
+        <div class="col s4">
+            <h4 class="underline">{{game.game_name}}</h4>
+        </div>
+        <div class="col s4">
             {% if game.game_image_name == "" %}
             <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="350"></img>
-            <p>No image available. Please add an image via the EDIT button.</p>
+            <p class="black-text">No image available. Please add an image via the EDIT button.</p>
             {% else %}
             <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
             {% endif %}
         </div>
-        <div class="col s6">
+        <div class="col s4">
             <ul>
                 <li>
-                    <h5 class="white-text"><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</h5>
+                    <p class="white-text"><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</p>
                 </li>
                 <li>
-                    <h5 class="white-text"><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</h5>
+                    <p class="white-text"><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</p>
                 </li>
                 <li>
-                    <h5 class="white-text"><i class="material-icons">child_care</i> Age range: {{game.age_range}}+</h5>
+                    <p class="white-text"><i class="material-icons">child_care</i> Age range: {{game.age_range}}+</p>
                 </li>
                 <li>
-                    <h5 class="white-text"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5</h5>
+                    <p class="white-text"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5</p>
                 </li>
                 <li>
-                    <h4 class="white-text">{{game.game_description}}</h4>
+                    <p class="white-text">{{game.game_description}}</p>
                 </li>
             </ul>
             <div class="row center-align">
                 <div class="col s6">
-                    <a href="{{url_for('edit_game', game_id=game._id)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>EDIT</a>
+                    <a href="{{url_for('edit_game', game_id=game._id)}}" class="waves-effect waves-light btn green accent-4"><i class="material-icons right">redo</i>EDIT</a>
                 </div>
                 <div class="col s6">
-                    <a href="#delete-game-modal" class="waves-effect waves-light btn modal-trigger"><i class="material-icons right">cloud</i>DELETE</a>
+                    <a href="#delete-game-modal" class="waves-effect waves-light btn modal-trigger red accent-4"><i class="material-icons right">clear</i>DELETE</a>
                 </div>
             </div>
             <div class="row center-align">
-                <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>REVIEWS</a>
+                <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn"><i class="material-icons right">more_horiz</i>REVIEWS</a>
             </div>
         </div>
     </div>
 </div>
+
+<div class="divider"></div>
 
 <div id="delete-game-modal" class="modal">
     <div class="modal-content">
@@ -54,4 +58,6 @@
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">DON'T DELETE</a>
     </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+
+{% endblock %}
