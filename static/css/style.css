@@ -24,6 +24,7 @@ iframe {
 .game-image {
     border: solid 3px black;
     margin: auto;
+    margin-top: 15px;
 }
 
 .review-div {
@@ -48,4 +49,8 @@ iframe {
     padding: 20px;
     margin-top: 20px;
     border: solid 3px black;
+}
+
+.game-div:hover {
+    background-color: #ff5722 !important;
 }

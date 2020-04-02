@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block content %} {% for game in games %}
-<div class="deep-orange lighten-1 white-text">
+<div class="divider"></div>
+<div class="deep-orange lighten-1 white-text game-div">
     <div class="row">
         <div class="col s4">
             <h4 class="underline">{{game.game_name}}</h4>
+            <p class="white-text">{{game.game_description}}</p>
         </div>
         <div class="col s4">
             {% if game.game_image_name == "" %}
@@ -17,17 +19,17 @@
                 <li>
                     <p class="white-text"><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</p>
                 </li>
+                <div class="divider"></div>
                 <li>
                     <p class="white-text"><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</p>
                 </li>
+                <div class="divider"></div>
                 <li>
                     <p class="white-text"><i class="material-icons">child_care</i> Age range: {{game.age_range}}+</p>
                 </li>
+                <div class="divider"></div>
                 <li>
                     <p class="white-text"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5</p>
-                </li>
-                <li>
-                    <p class="white-text">{{game.game_description}}</p>
                 </li>
             </ul>
             <div class="row center-align">
@@ -44,8 +46,6 @@
         </div>
     </div>
 </div>
-
-<div class="divider"></div>
 
 <div id="delete-game-modal" class="modal">
     <div class="modal-content">
