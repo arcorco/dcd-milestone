@@ -1,14 +1,16 @@
 /*----------------------------------Generally applicable styles---*/
+
 .underline {
     text-decoration: underline;
 }
 
 h1 {
-    color:#ffffff;
+    color: #ffffff;
 }
 
 iframe {
     border: solid 2px black;
+    max-width: 50px;
 }
 
 .game-carousel {
@@ -17,7 +19,7 @@ iframe {
 
 .slick-arrow {
     text-transform: uppercase;
-    color: #ff8a65; 
+    color: #ff8a65;
     border-radius: 5px;
 }
 
@@ -54,3 +56,11 @@ iframe {
 .game-div:hover {
     background-color: #ff5722 !important;
 }
+
+
+
+
+/*----------------------------------Media Queries---*/
+
+
+
