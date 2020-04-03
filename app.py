@@ -28,6 +28,18 @@ def file(filename):
 @app.route('/get_games')
 def get_games():
     return render_template('games.html', games=mongo.db.games.find())
+
+@app.route('/get_games/alphabetical')    
+def sort_alpha():
+    return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"game_name" : 1 }}]))
+    
+@app.route('/get_games/most_recent')
+def sort_recent():
+    return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"_id" : -1 }}]))
+    
+@app.route('/get_games/highest_rated')
+def sort_rated():
+    return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"avg_rating" : -1 }}]))
     
 @app.route('/dashboard')
 def dashboard():
@@ -109,7 +121,6 @@ def insert_review():
         new_review.update( {'recommended' : 'Yes'} )
     else:
         new_review.update( {'recommended' : 'No' })
-
     reviews.insert_one(new_review)
     ratings = []
     for review in reviews.find():
@@ -165,6 +176,18 @@ def delete_review(review_id):
 @app.route('/game_review/<game_name>')
 def game_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name": game_name}), game=mongo.db.games.find_one({"game_name": game_name}))
+    
+@app.route('/game_review/<game_name>/most_recent')
+def recent_review(game_name):
+    return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"_id" : -1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
+
+@app.route('/game_review/<game_name>/highest_review')
+def highest_review(game_name):
+    return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"rating" : -1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
+
+@app.route('/game_review/<game_name>/lowest_review')
+def lowest_review(game_name):
+    return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"rating" : 1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

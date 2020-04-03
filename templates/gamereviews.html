@@ -39,6 +39,9 @@
 
 
 <div class="container">
+    <a href="{{url_for('recent_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Most Recent</a>
+    <a href="{{url_for('highest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Highest Rating Top</a>
+    <a href="{{url_for('lowest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Lowest Rating Top</a>
     {% for review in reviews %}
     <div class="row review-div">
         <div class="col s6">
