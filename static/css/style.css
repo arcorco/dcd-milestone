@@ -10,7 +10,22 @@ h1 {
 
 iframe {
     border: solid 2px black;
-    max-width: 50px;
+}
+
+.title-div {
+    background-image: url(/static/images/boardgame-stack.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.slider-button-row {
+    padding-top: 30px;
+}
+
+.carousel-container {
+    width: 90%;
 }
 
 .game-carousel {
@@ -57,10 +72,22 @@ iframe {
     background-color: #ff5722 !important;
 }
 
+/*----------------------------------Slick Carousel Style---*/
 
+.nextArrowBtn {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    right: 0;
+    color: #BFAFB2;
+}
 
+.prevArrowBtn {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 0;
+    color: #BFAFB2;
+}
 
 /*----------------------------------Media Queries---*/
-
-
-

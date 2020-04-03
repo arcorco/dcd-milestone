@@ -2,46 +2,51 @@
 <div class="container form-container">
   <h3>Add Game</h3>
   <div class="row">
-    <form action="{{url_for('insert_game')}}" method="POST" class="col s12" enctype="multipart/form-data">
+    <form action="{{url_for('insert_game')}}" method="POST" class="col s12" enctype="multipart/form-data" onsubmit="return formValidation()">
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">create</i>
-          <input id="game_name" name="game_name" type="text" class="validate" required>
+          <input id="game_name" name="game_name" type="text">
           <label for="game_name">Game Name</label>
+          <p id="p1"></p>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">format_align_justify</i>
-          <input id="game_description" name="game_description" type="text" class="validate" data-length="180" />
+          <input id="game_description" name="game_description" type="text" data-length="180"/>
           <label for="game_description">Game Description</label>
+          <p id="p2"></p>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">work</i>
-          <input id="manufacturer" name="manufacturer" type="text" class="validate">
+          <input id="manufacturer" name="manufacturer" type="text">
           <label for="manufacturer">Manufacturer</label>
+          <p id="p3"></p>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">person</i>
-          <input name="number_of_players_min" id="number_of_players_min" type="text" class="validate">
+          <input name="number_of_players_min" id="number_of_players_min" type="text">
           <label for="number_of_players_min">Minimum Number of Players</label>
         </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">group</i>
-          <input id="number_of_players_max" name="number_of_players_max" type="text" class="validate">
+          <input id="number_of_players_max" name="number_of_players_max" type="text">
           <label for="number_of_players_max">Maximum Number of Players</label>
         </div>
+        <p id="p4"></p>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">child_care</i>
-          <input id="age_range" name="age_range" type="text" class="validate">
+          <input id="age_range" name="age_range" type="text">
           <label for="age_range">Minimum Age</label>
+          <p id="p5"></p>
         </div>
       </div>
       <div class="row">
@@ -57,7 +62,7 @@
         </div>
       </div>
       <div class="row">
-        <button class="btn waves-effect waves-light" type="submit">Add Game
+        <button class="btn waves-effect waves-light" type="submit" id="add-game">Add Game
     <i class="material-icons right">send</i>
   </button>
       </div>

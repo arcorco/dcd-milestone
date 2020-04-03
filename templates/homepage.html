@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row center-align">
+<div class="center-align title-div">
     <h1 class="underline">
         Board Game Library
     </h1>
@@ -7,33 +7,38 @@
         Welcome to your board game library! Here you can keep track of your board games, leave reviews and ask your friends to leave them too!
     </p>
 </div>
+<div class="center-align slider-button-row">
+    <a class="waves-effect waves-light btn prev slick-prev"><i class="material-icons">arrow_back</i></a>
+    <a class="waves-effect waves-light btn next slick-next"><i class="material-icons">arrow_forward</i></a>
+</div>
 
-<div class="center-align game-carousel hide-on-med-and-down">
-    {% for game in games %}
-    <div class="carousel-item deep-orange lighten-1 white-text">
-        <div class="row">
-            <div class="col s12">
-                <h1 class="underline">{{game.game_name}}</h1>
-                <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
-                <p class="white-text">{{game.game_description}}</p>
-                {% if game.game_image_name == "" %}
-                <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="250"></img>
-                <p class="black-text">No image available.</p>
-                {% else %}
-                <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
-                <p></p>
-                {% endif %}
-                <div class="row">
-                    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn deep-orange accent-4">VIEW GAME INFORMATION AND REVIEWS</a>
+<div class="row">
+    <div class="center-align game-carousel hide-on-med-and-down">
+        {% for game in games %}
+        <div class="carousel-item deep-orange lighten-1 white-text">
+            <div class="row">
+                <div class="col s12">
+                    <h1 class="underline">{{game.game_name}}</h1>
+                    <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
+                    <p class="white-text">{{game.game_description}}</p>
+                    {% if game.game_image_name == "" %}
+                    <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="250"></img>
+                    <p class="black-text">No image available.</p>
+                    {% else %}
+                    <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
+                    <p></p>
+                    {% endif %}
+                    <div class="row">
+                        <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn deep-orange accent-4">VIEW GAME INFORMATION AND REVIEWS</a>
+                    </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
 {% set rewind = games.rewind() %}
-
 <div class="center game-carousel-mobile hide-on-large-only">
     {% for game in games %}
     <div class="carousel-item deep-orange lighten-1 white-text">
@@ -56,17 +61,5 @@
         </div>
     </div>
     {% endfor %}
-</div>
-
-<div class="row center-align">
-    <h1 class="underline">Board Game Statistics</h1>
-</div>
-<div class="row center-align">
-    <div class="col s12 xl6">
-        <iframe style="background: #FFFFFF;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="100%" height="480" src="https://charts.mongodb.com/charts-project-0-apglr/embed/charts?id=cc1cb915-37b6-41cb-956a-b87ac3843601&theme=light"></iframe>
-    </div>
-    <div class="col s12 xl6">
-        <iframe style="background: #FFFFFF;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="100%" height="480" src="https://charts.mongodb.com/charts-project-0-apglr/embed/charts?id=1fd2486b-d0e1-414d-bd71-1d03d03a220d&theme=light"></iframe>
-    </div>
 </div>
 {% endblock %}

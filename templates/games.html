@@ -36,12 +36,10 @@
                 <div class="col s6">
                     <a href="{{url_for('edit_game', game_id=game._id)}}" class="waves-effect waves-light btn green accent-4"><i class="material-icons right">redo</i>EDIT</a>
                 </div>
+            
                 <div class="col s6">
-                    <a href="#delete-game-modal" class="waves-effect waves-light btn modal-trigger red accent-4"><i class="material-icons right">clear</i>DELETE</a>
-                </div>
-            </div>
-            <div class="row center-align">
                 <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn"><i class="material-icons right">more_horiz</i>REVIEWS</a>
+                </div>
             </div>
         </div>
     </div>

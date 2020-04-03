@@ -29,6 +29,10 @@ def file(filename):
 def get_games():
     return render_template('games.html', games=mongo.db.games.find())
     
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+    
 @app.route('/add_game')
 def add_game():
     return render_template('addgame.html')
@@ -105,6 +109,7 @@ def insert_review():
         new_review.update( {'recommended' : 'Yes'} )
     else:
         new_review.update( {'recommended' : 'No' })
+
     reviews.insert_one(new_review)
     ratings = []
     for review in reviews.find():
