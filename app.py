@@ -176,7 +176,7 @@ def delete_review(review_id):
 @app.route('/game_review/<game_name>')
 def game_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name": game_name}), game=mongo.db.games.find_one({"game_name": game_name}))
-    
+
 @app.route('/game_review/<game_name>/most_recent')
 def recent_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"_id" : -1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
@@ -188,7 +188,11 @@ def highest_review(game_name):
 @app.route('/game_review/<game_name>/lowest_review')
 def lowest_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"rating" : 1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
-    
+
+@app.route('/add_review/<game_name>')
+def add_game_review(game_name):
+    return render_template('addreview.html', games=mongo.db.games.find())
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
