@@ -3,8 +3,13 @@
     <a href="{{url_for('sort_alpha')}}" class="waves-effect waves-light btn">Alphabetical</a>
     <a href="{{url_for('sort_recent')}}" class="waves-effect waves-light btn">Recently Added</a>
     <a href="{{url_for('sort_rated')}}" class="waves-effect waves-light btn">Highest Rating</a>
+    <p>Filter by rating:</p>
+    <a href="{{url_for('avg_rating2')}}" class="waves-effect waves-light btn">2 Star or Higher</a>
+    <a href="{{url_for('avg_rating3')}}" class="waves-effect waves-light btn">3 Star or Higher</a>
+    <a href="{{url_for('avg_rating4')}}" class="waves-effect waves-light btn">4 Star or Higher</a>
+    <a href="{{url_for('avg_rating5')}}" class="waves-effect waves-light btn">5 Star</a>
 </div>
-{% for game in games %}
+{% set rewind = games.rewind() %} {% for game in games %}
 <div class="divider"></div>
 <div class="deep-orange lighten-1 white-text game-div">
     <div class="row">

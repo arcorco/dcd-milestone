@@ -1,9 +1,8 @@
-{% extends 'base.html'%} {% block content %}
-{% set current_game = request.path -%}
+{% extends 'base.html'%} {% block content %} {% set current_game = request.path -%}
 <div class="container form-container">
     <h3>Add Review</h3>
     <div class="row">
-        <form action="{{url_for('insert_review')}}" method="POST" class="col s12">
+        <form action="{{url_for('insert_review')}}" method="POST" name="review-form" class="col s12" onsubmit="return formValidationReview()">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">poll</i>
@@ -18,26 +17,29 @@
                   {% endfor %}
                 </select>
                     <label>Game Name</label>
+                    <p id="p6"></p>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">format_align_justify</i>
-                    <textarea id="review" name="review" class="materialize-textarea validate" required></textarea>
+                    <textarea id="review" name="review" class="materialize-textarea"></textarea>
                     <label for="review">Review</label>
+                    <p id="p7"></p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">star</i>
-                    <select id="rating" name="rating">
-      <option value="" disabled selected >Choose your star rating out of 5:</option>
+                    <select id="rating" name="rating" required>
+      <option value="" disabled selected>Choose your star rating out of 5:</option>
       {% for i in range(1, 6) %}
           <option value="{{ i }}">{{i}}</option>
       {% endfor %}
     </select>
                     <label>Rating</label>
+                    <p id="p8"></p>
                 </div>
             </div>
             <div class="row">

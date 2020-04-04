@@ -2,7 +2,7 @@
 <div class="container form-container">
   <h3>Edit Game</h3>
   <div class="row">
-    <form action="{{url_for('update_game', game_id=game._id)}}" method="POST" class="col s12" enctype="multipart/form-data" onsubmit="return formValidation()">
+    <form action="{{url_for('update_game', game_id=game._id)}}" method="POST" class="col s12" enctype="multipart/form-data" onsubmit="return formValidationGame()">
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">create</i>
@@ -15,6 +15,7 @@
           <i class="material-icons prefix">format_align_justify</i>
           <input id="game_description" name="game_description" type="text" class="validate" value="{{game.game_description}}" data-length="120" />
           <label for="game_description">Game Description</label>
+          <p id="p2"></p>
         </div>
       </div>
       <div class="row">
@@ -22,6 +23,7 @@
           <i class="material-icons prefix">work</i>
           <input id="manufacturer" name="manufacturer" type="text" class="validate" value="{{game.manufacturer}}">
           <label for="manufacturer">Manufacturer</label>
+          <p id="p3"></p>
         </div>
       </div>
       <div class="row">
@@ -36,12 +38,14 @@
           <input id="number_of_players_max" name="number_of_players_max" type="text" class="validate" value="{{game.number_of_players_max}}">
           <label for="number_of_players_max">Maximum Number of Players</label>
         </div>
+        <p id="p4"></p>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">child_care</i>
           <input id="age_range" name="age_range" type="text" class="validate" value="{{game.age_range}}">
           <label for="age_range">Minimum Age</label>
+          <p id="p5"></p>
         </div>
       </div>
       <div class="row">
