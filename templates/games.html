@@ -1,21 +1,25 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row buttons">
-    <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="sort-by-games">Sort by...<i class="material-icons right">arrow_drop_down</i></a>
-    <ul id="sort-by-games" class="dropdown-content">
-        <li><a href="{{url_for('sort_alpha')}}">Alphabetical</a></li>
-        <li><a href="{{url_for('sort_recent')}}">Recently Added</a></li>
-        <li><a href="{{url_for('sort_rated')}}">Highest Rating</a></li>
-    </ul>
-
-    <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="filter-games">Filter by...<i class="material-icons right">arrow_drop_down</i></a>
-    <ul id="filter-games" class="dropdown-content">
-        <li><a href="{{url_for('avg_rating2')}}">2 Star or Higher</a></li>
-        <li><a href="{{url_for('avg_rating3')}}">3 Star or Higher</a></li>
-        <li><a href="{{url_for('avg_rating4')}}">4 Star or Higher</a></li>
-        <li><a href="{{url_for('avg_rating5')}}">5 Star</a></li>
-    </ul>
-
-    <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn purple darken-3">All Games</a>
+<div class="row buttons center-align">
+    <div class="col s6 m4">
+        <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="sort-by-games">Sort by<i class="material-icons right">arrow_drop_down</i></a>
+        <ul id="sort-by-games" class="dropdown-content">
+            <li><a href="{{url_for('sort_alpha')}}">Alphabetical</a></li>
+            <li><a href="{{url_for('sort_recent')}}">Recently Added</a></li>
+            <li><a href="{{url_for('sort_rated')}}">Highest Rating</a></li>
+        </ul>
+    </div>
+    <div class="col s6 m4">
+        <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="filter-games">Filter by<i class="material-icons right">arrow_drop_down</i></a>
+        <ul id="filter-games" class="dropdown-content">
+            <li><a href="{{url_for('avg_rating2')}}">2 Star or Higher</a></li>
+            <li><a href="{{url_for('avg_rating3')}}">3 Star or Higher</a></li>
+            <li><a href="{{url_for('avg_rating4')}}">4 Star or Higher</a></li>
+            <li><a href="{{url_for('avg_rating5')}}">5 Star</a></li>
+        </ul>
+    </div>
+    <div class="col s12 m4 all-games">
+        <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn purple darken-3">All Games</a>
+    </div>
 </div>
 {% for game in games %}
 <div class="purple lighten-4 game-div hide-on-med-and-down">
@@ -23,7 +27,7 @@
     <div class="row">
         <div class="col s4">
             <h4 class="underline">{{game.game_name}}</h4>
-            <p>{{game.game_description}}</p>
+            <p class="game-description">{{game.game_description}}</p>
         </div>
         <div class="col s4">
             {% if game.game_image_name == "" %}
@@ -35,19 +39,19 @@
         <div class="col s4">
             <ul>
                 <li>
-                    <p><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</p>
+                    <p><i class="material-icons">work</i> <strong>Manufacturer</strong>: {{game.manufacturer}}</p>
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <p><i class="material-icons">group</i> Number of players: {{game.number_of_players}}</p>
+                    <p><i class="material-icons">group</i> <strong>Number of players</strong>: {{game.number_of_players}}</p>
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <p><i class="material-icons">child_care</i> Age range: {{game.age_range}}+</p>
+                    <p><i class="material-icons">child_care</i> <strong>Age range</strong>: {{game.age_range}}+</p>
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <p><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5</p>
+                    <p><i class="material-icons">star</i><strong>Average rating</strong>: {{game.avg_rating}}/5</p>
                 </li>
             </ul>
             <div class="row center-align">
