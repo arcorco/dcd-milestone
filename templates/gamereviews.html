@@ -4,7 +4,7 @@
         <div class="col s12">
             <h1 class="underline">{{game.game_name}}</h1>
             {% if game.game_image_name == "" %}
-            <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="350"></img>
+            <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
             <p class="black-text">No image available. Please add an image via the EDIT button.</p>
             {% else %}
             <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>

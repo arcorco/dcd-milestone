@@ -23,7 +23,7 @@
                     <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
                     <p class="white-text">{{game.game_description}}</p>
                     {% if game.game_image_name == "" %}
-                    <img src="/static/images/iconfinder_icon-image_211677.jpg" class="materialbox game-image" width="250"></img>
+                    <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="250"></img>
                     <p class="black-text">No image available.</p>
                     {% else %}
                     <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
