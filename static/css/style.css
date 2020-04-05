@@ -111,6 +111,11 @@ iframe {
     margin-top: 30px;
 }
 
+/*----------------------------------forms---*/
+.validation {
+    color: #d50000;
+}
+
 /*----------------------------------Slick Carousel Style---*/
 
 .nextArrowBtn {

@@ -17,42 +17,50 @@ app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/home', methods=['POST'])
+@app.route('/home')
 def home():
     return render_template('homepage.html', games=mongo.db.games.find())
-    
+  
+#Sends images to MongoDB database (Credit: Pretty Printed on YouTube - https://www.youtube.com/watch?v=DsgAuceHha4 )  
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
-    
+
 @app.route('/get_games')
 def get_games():
     return render_template('games.html', games=mongo.db.games.find())
 
+#Sort games database into alphabetical order
 @app.route('/get_games/alphabetical')    
 def sort_alpha():
     return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"game_name" : 1 }}]))
-    
+
+#Sort games database into most recently added    
 @app.route('/get_games/most_recent')
 def sort_recent():
     return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"_id" : -1 }}]))
-    
+ 
+#Sort games database into highest rated order    
 @app.route('/get_games/highest_rated')
 def sort_rated():
     return render_template('games.html', games=mongo.db.games.aggregate([{"$sort" : {"avg_rating" : -1 }}]))
-    
+
+#Filter games database into ratings of at least 2    
 @app.route('/get_games/avg_rating2')
 def avg_rating2():
     return render_template('games.html', games=mongo.db.games.find({"avg_rating" : {"$gt" : 1.9 }}))
-    
+
+#Filter games database into ratings of at least 3    
 @app.route('/get_games/avg_rating3')
 def avg_rating3():
     return render_template('games.html', games=mongo.db.games.find({"avg_rating" : {"$gt" : 2.9 }}))
-    
+
+#Filter games database into ratings of at least 4    
 @app.route('/get_games/avg_rating4')
 def avg_rating4():
     return render_template('games.html', games=mongo.db.games.find({"avg_rating" : {"$gt" : 3.9 }}))
-    
+
+#Filter games database into ratings of at least 5    
 @app.route('/get_games/avg_rating5')
 def avg_rating5():
     return render_template('games.html', games=mongo.db.games.find({"avg_rating" : {"$gt" : 4.9 }}))
@@ -65,6 +73,7 @@ def dashboard():
 def add_game():
     return render_template('addgame.html')
 
+#Takes form from addgame.html and creates a document in the games collection
 @app.route('/insert_game', methods=['POST'])
 def insert_game():
     if 'game_image' in request.files:
@@ -85,6 +94,7 @@ def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     return render_template('editgame.html', game=the_game)
 
+#Takes form from editgame.html and updates a document in the games collection
 @app.route('/update_game/<game_id>', methods=["POST"])
 def update_game(game_id):
     if 'game_image' in request.files:
@@ -118,6 +128,7 @@ def update_game(game_id):
         }})
     return redirect(url_for('get_games'))
 
+#Deletes a chosen document in the games collection
 @app.route('/delete_game/<game_id>')
 def delete_game(game_id):
     mongo.db.games.remove({'_id': ObjectId(game_id)})
@@ -126,7 +137,8 @@ def delete_game(game_id):
 @app.route('/add_review')
 def add_review():
     return render_template('addreview.html', games=mongo.db.games.find())
-    
+ 
+#Takes form from addreview.html and creates a document in the reviews collection    
 @app.route('/insert_review', methods=['POST'])
 def insert_review():
     games = mongo.db.games
@@ -151,7 +163,8 @@ def insert_review():
 def edit_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('editreview.html', review=the_review, games=mongo.db.games.find())
-    
+ 
+#Takes form from editreview.html and updates a document in the reviews collection      
 @app.route('/update_review/<review_id>', methods=["POST"])
 def update_review(review_id):
     games = mongo.db.games
@@ -183,28 +196,34 @@ def update_review(review_id):
     {"$set": {"avg_rating": avg_rating}})
     return redirect(url_for('get_games'))
 
+#Deletes a chosen document in the reviews collection
 @app.route('/delete_review/<review_id>')
 def delete_review(review_id):
     deleted_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
     return redirect(url_for('get_games'))
-    
+ 
+#Read a selected game in the games database and display its information and the reviews from the reviews database of that particular game 
 @app.route('/game_review/<game_name>')
 def game_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name": game_name}), game=mongo.db.games.find_one({"game_name": game_name}))
 
+#Sort reviews database into most recently added and filters to show reviews with matching "game_name"
 @app.route('/game_review/<game_name>/most_recent')
 def recent_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"_id" : -1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
 
+#Sort reviews database into highest rated order and filters to show reviews with matching "game_name"
 @app.route('/game_review/<game_name>/highest_review')
 def highest_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"rating" : -1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
 
+#Sort reviews database into lowest rated order and filters to show reviews with matching "game_name"
 @app.route('/game_review/<game_name>/lowest_review')
 def lowest_review(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.aggregate([{"$sort" : {"rating" : 1 }}, {"$match" : { "game_name" : game_name }}]), game=mongo.db.games.find_one({"game_name": game_name}))
 
+#The following 5 app routes filter reviews database by "game_name" and "rating"
 @app.route('/game_review/<game_name>/rating1')
 def rating1(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name" : game_name, "rating" : "1"}), game=mongo.db.games.find_one({"game_name": game_name}))
@@ -225,7 +244,7 @@ def rating4(game_name):
 def rating5(game_name):
     return render_template('gamereviews.html', reviews=mongo.db.reviews.find({"game_name" : game_name, "rating" : "5"}), game=mongo.db.games.find_one({"game_name": game_name}))
     
-
+#When the users adds a review from a games gamereviews.html page, the game_name value is already selected
 @app.route('/add_review/<game_name>')
 def add_game_review(game_name):
     return render_template('addreview.html', games=mongo.db.games.find())
