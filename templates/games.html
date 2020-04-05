@@ -1,18 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-    <a href="{{url_for('sort_alpha')}}" class="waves-effect waves-light btn">Alphabetical</a>
-    <a href="{{url_for('sort_recent')}}" class="waves-effect waves-light btn">Recently Added</a>
-    <a href="{{url_for('sort_rated')}}" class="waves-effect waves-light btn">Highest Rating</a>
+    <a href="{{url_for('sort_alpha')}}" class="waves-effect waves-light btn purple darken-3">Alphabetical</a>
+    <a href="{{url_for('sort_recent')}}" class="waves-effect waves-light btn purple darken-3">Recently Added</a>
+    <a href="{{url_for('sort_rated')}}" class="waves-effect waves-light btn purple darken-3">Highest Rating</a>
     <p>Filter by rating:</p>
-    <a href="{{url_for('avg_rating2')}}" class="waves-effect waves-light btn">2 Star or Higher</a>
-    <a href="{{url_for('avg_rating3')}}" class="waves-effect waves-light btn">3 Star or Higher</a>
-    <a href="{{url_for('avg_rating4')}}" class="waves-effect waves-light btn">4 Star or Higher</a>
-    <a href="{{url_for('avg_rating5')}}" class="waves-effect waves-light btn">5 Star</a>
-    <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn">All Games</a>
+    <a href="{{url_for('avg_rating2')}}" class="waves-effect waves-light btn purple darken-3">2 Star or Higher</a>
+    <a href="{{url_for('avg_rating3')}}" class="waves-effect waves-light btn purple darken-3">3 Star or Higher</a>
+    <a href="{{url_for('avg_rating4')}}" class="waves-effect waves-light btn purple darken-3">4 Star or Higher</a>
+    <a href="{{url_for('avg_rating5')}}" class="waves-effect waves-light btn purple darken-3">5 Star</a>
+    <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn purple darken-3">All Games</a>
 </div>
 {% set rewind = games.rewind() %} {% for game in games %}
 <div class="divider"></div>
-<div class="deep-orange lighten-1 white-text game-div">
+<div class="purple lighten-4 white-text game-div">
     <div class="row">
         <div class="col s4">
             <h4 class="underline">{{game.game_name}}</h4>

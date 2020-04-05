@@ -39,15 +39,15 @@
 
 
 <div class="container">
-    <a href="{{url_for('recent_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Most Recent</a>
-    <a href="{{url_for('highest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Highest Rating Top</a>
-    <a href="{{url_for('lowest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">Lowest Rating Top</a>
-    <a href="{{url_for('rating1', game_name=game.game_name)}}" class="waves-effect waves-light btn">1 Star Reviews</a>
-    <a href="{{url_for('rating2', game_name=game.game_name)}}" class="waves-effect waves-light btn">2 Star Reviews</a>
-    <a href="{{url_for('rating3', game_name=game.game_name)}}" class="waves-effect waves-light btn">3 Star Reviews</a>
-    <a href="{{url_for('rating4', game_name=game.game_name)}}" class="waves-effect waves-light btn">4 Star Reviews</a>
-    <a href="{{url_for('rating5', game_name=game.game_name)}}" class="waves-effect waves-light btn">5 Star Reviews</a>
-    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn">All Reviews</a>
+    <a href="{{url_for('recent_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Most Recent</a>
+    <a href="{{url_for('highest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Highest Rating Top</a>
+    <a href="{{url_for('lowest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Lowest Rating Top</a>
+    <a href="{{url_for('rating1', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">1 Star Reviews</a>
+    <a href="{{url_for('rating2', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">2 Star Reviews</a>
+    <a href="{{url_for('rating3', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">3 Star Reviews</a>
+    <a href="{{url_for('rating4', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">4 Star Reviews</a>
+    <a href="{{url_for('rating5', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">5 Star Reviews</a>
+    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">All Reviews</a>
     {% for review in reviews %}
     <div class="row review-div">
         <div class="col s6">
