@@ -164,7 +164,7 @@
 
 
             function formValidationReview() {
-                let game_name = document.getElementById('game-name');
+                let game_name = document.getElementById('game_name');
                 let review = document.getElementById('review');
                 let rating = document.getElementById('rating');
 
@@ -180,7 +180,7 @@
             }
 
             function selectionGame(inputtext, alertMsg) {
-                if (inputtext.value.length == 0) {
+                if (inputtext.value == "-1") {
                     document.getElementById('p6').innerText = alertMsg;
                     return false;
                 }
@@ -190,7 +190,7 @@
             }
 
             function nonEmptyReview(inputtext, alertMsg) {
-                if (inputtext.value == "") {
+                if (inputtext.value.length == 0) {
                     document.getElementById('p7').innerText = alertMsg;
                     return false;
                 }
@@ -200,7 +200,7 @@
             }
 
             function selectionRating(inputtext, alertMsg) {
-                if (inputtext.value == "") {
+                if (inputtext.value == "-1") {
                     document.getElementById('p8').innerText = alertMsg;
                     return false;
                 }

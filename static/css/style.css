@@ -16,6 +16,10 @@ iframe {
     margin-top: 20px;
 }
 
+.divider {
+    margin-bottom: 23px;
+}
+
 /*----------------------------------homepage.html---*/
 
 .title-div {
@@ -31,7 +35,7 @@ iframe {
 }
 
 .title-info {
-    background-color: rgba(106, 27, 154, 0.6);
+    background-color: rgba(106, 27, 154, 0.8);
 }
 
 .title {
@@ -40,8 +44,12 @@ iframe {
     width: 100%;
 }
 
+.homepage-description {
+    font-size: 24px;
+}
+
 .slider-button-row {
-    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .carousel-container {
@@ -52,10 +60,18 @@ iframe {
     padding-top: 20px;
 }
 
+.carousel-item:hover {
+    background-color: #ce93d8 !important;
+}
+
 .slick-arrow {
     text-transform: uppercase;
     color: #ff8a65;
     border-radius: 5px;
+}
+
+.game-info {
+    padding-top: 30px;
 }
 
 .game-image {
@@ -74,12 +90,6 @@ iframe {
     margin-top: 30px;
 }
 
-
-
-.divider {
-    margin-bottom: 23px;
-}
-
 .form-container {
     background-color: white;
     padding: 20px;
@@ -87,12 +97,8 @@ iframe {
     border: solid 3px black;
 }
 
-.carousel-item:hover{
-    background-color: #ce93d8  !important;
-}
-
 .game-div:hover {
-    background-color: #ce93d8  !important;
+    background-color: #ce93d8 !important;
 }
 
 /*----------------------------------Slick Carousel Style---*/
@@ -120,5 +126,13 @@ iframe {
 @media only screen and (max-width: 600px) {
     .game-image {
         max-width: 200px;
+    }
+
+    .brand-logo {
+        font-size: 20px !important;
+    }
+
+    .title-row {
+        padding-top: 150px;
     }
 }

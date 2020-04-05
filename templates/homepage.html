@@ -6,18 +6,12 @@
                 Board Game Library
             </h1>
             <div class="row">
-                <p class="white-text">
+                <p class="white-text homepage-description">
                     Welcome to your board game library! Here you can keep track of your board games, leave reviews and ask your friends to leave them too!
                 </p>
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="center-align slider-button-row">
-    <a class="waves-effect waves-light btn prev slick-prev purple darken-3"><i class="material-icons">arrow_back</i></a>
-    <a class="waves-effect waves-light btn next slick-next purple darken-3"><i class="material-icons">arrow_forward</i></a>
 </div>
 
 <div class="row">
@@ -35,7 +29,7 @@
                     <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
                     <p></p>
                     {% endif %}
-                    <div class="row">
+                    <div class="row game-info">
                         <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">VIEW GAME INFORMATION AND REVIEWS</a>
                     </div>
                 </div>
@@ -60,12 +54,17 @@
                 <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
                 <p></p>
                 {% endif %}
-                <div class="row">
+                <div class="row game-info">
                     <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">VIEW GAME INFORMATION AND REVIEWS</a>
                 </div>
             </div>
         </div>
     </div>
     {% endfor %}
+</div>
+
+<div class="center-align slider-button-row">
+    <a class="waves-effect waves-light btn prev slick-prev purple darken-3"><i class="material-icons">arrow_back</i></a>
+    <a class="waves-effect waves-light btn next slick-next purple darken-3"><i class="material-icons">arrow_forward</i></a>
 </div>
 {% endblock %}
