@@ -12,6 +12,10 @@ iframe {
     border: solid 2px black;
 }
 
+.buttons {
+    margin-top: 20px;
+}
+
 /*----------------------------------homepage.html---*/
 
 .title-div {
@@ -19,15 +23,19 @@ iframe {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 90vh;
 }
 
 .title-row {
     padding-top: 250px;
 }
 
+.title-info {
+    background-color: rgba(106, 27, 154, 0.6);
+}
+
 .title {
-    background-color: rgba(0, 0, 0, 0,8);
+    display: block;
     margin-top: 0px;
     width: 100%;
 }
@@ -59,6 +67,7 @@ iframe {
 .review-div {
     border: solid 3px black;
     background-color: #ffccbc;
+    margin-top: 20px;
 }
 
 .review-button {
@@ -107,3 +116,9 @@ iframe {
 
 
 /*----------------------------------Media Queries---*/
+
+@media only screen and (max-width: 600px) {
+    .game-image {
+        max-width: 200px;
+    }
+}

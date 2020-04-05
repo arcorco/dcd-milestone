@@ -1,16 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 <div class="title-div center-align">
     <div class="row title-row">
-        <h1 class="underline title">
-            Board Game Library
-        </h1>
-    </div>
-    <div class="row">
-        <p class="white-text">
-            Welcome to your board game library! Here you can keep track of your board games, leave reviews and ask your friends to leave them too!
-        </p>
+        <div class="row title-info">
+            <h1 class="underline title">
+                Board Game Library
+            </h1>
+            <div class="row">
+                <p class="white-text">
+                    Welcome to your board game library! Here you can keep track of your board games, leave reviews and ask your friends to leave them too!
+                </p>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <div class="center-align slider-button-row">
     <a class="waves-effect waves-light btn prev slick-prev purple darken-3"><i class="material-icons">arrow_back</i></a>
@@ -28,7 +31,6 @@
                     <p>{{game.game_description}}</p>
                     {% if game.game_image_name == "" %}
                     <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="250"></img>
-                    <p class="black-text">No image available.</p>
                     {% else %}
                     <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
                     <p></p>
@@ -51,10 +53,9 @@
             <div class="col s12">
                 <h1 class="underline">{{game.game_name}}</h1>
                 <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
-                <p class="white-text">{{game.game_description}}</p>
+                <p>{{game.game_description}}</p>
                 {% if game.game_image_name == "" %}
                 <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
-                <p class="black-text">No image available.</p>
                 {% else %}
                 <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
                 <p></p>

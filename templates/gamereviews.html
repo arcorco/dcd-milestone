@@ -1,11 +1,11 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container center-align">
-    <div class="row white-text">
+<div class="container center-align hide-on-med-and-down">
+    <div class="row">
         <div class="col s12">
             <h1 class="underline">{{game.game_name}}</h1>
             {% if game.game_image_name == "" %}
             <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
-            <p class="black-text">No image available. Please add an image via the EDIT button.</p>
+            <p class="black-text">Please add an image via the EDIT button.</p>
             {% else %}
             <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
             {% endif %}
@@ -13,7 +13,7 @@
             <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
         </div>
     </div>
-    <div class="row white-text">
+    <div class="row">
         <div class="col s4">
             <h5 class=""><i class="material-icons">work</i> Manufacturer: {{game.manufacturer}}</h5>
         </div>
@@ -38,17 +38,24 @@
 </div>
 
 
-<div class="container">
-    <a href="{{url_for('recent_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Most Recent</a>
-    <a href="{{url_for('highest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Highest Rating Top</a>
-    <a href="{{url_for('lowest_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">Lowest Rating Top</a>
-    <a href="{{url_for('rating1', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">1 Star Reviews</a>
-    <a href="{{url_for('rating2', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">2 Star Reviews</a>
-    <a href="{{url_for('rating3', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">3 Star Reviews</a>
-    <a href="{{url_for('rating4', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">4 Star Reviews</a>
-    <a href="{{url_for('rating5', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">5 Star Reviews</a>
-    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">All Reviews</a>
-    {% for review in reviews %}
+<div class="container buttons">
+    <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="sort-by-reviews">Sort by...<i class="material-icons right">arrow_drop_down</i></a>
+    <ul id="sort-by-reviews" class="dropdown-content">
+        <li><a href="{{url_for('recent_review', game_name=game.game_name)}}">Most Recent</a></li>
+        <li><a href="{{url_for('highest_review', game_name=game.game_name)}}">Highest Rating Top</a></li>
+        <li><a href="{{url_for('lowest_review', game_name=game.game_name)}}">Lowest Rating Top</a></li>
+    </ul>
+
+    <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="filter-reviews">Filter by...<i class="material-icons right">arrow_drop_down</i></a>
+    <ul id="filter-reviews" class="dropdown-content">
+        <li><a href="{{url_for('rating1', game_name=game.game_name)}}">1 Star Reviews</a></li>
+        <li><a href="{{url_for('rating2', game_name=game.game_name)}}">2 Star Reviews</a></li>
+        <li><a href="{{url_for('rating3', game_name=game.game_name)}}">3 Star Reviews</a></li>
+        <li><a href="{{url_for('rating4', game_name=game.game_name)}}">4 Star Reviews</a</li>
+        <li><a href="{{url_for('rating5', game_name=game.game_name)}}">5 Star Reviews</a></li>
+    </ul>
+
+    <a href="{{url_for('game_review', game_name=game.game_name)}}" class="waves-effect waves-light btn purple darken-3">All Reviews</a> {% for review in reviews %}
     <div class="row review-div">
         <div class="col s6">
             <ul>

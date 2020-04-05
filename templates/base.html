@@ -49,14 +49,18 @@
                 arrows: false
             });
 
-            $('.game-carousel-mobile').slick();
+            $('.game-carousel-mobile').slick({
+                arrows: false
+            });
 
             $('.prev').click(function() {
                 $('.game-carousel').slick('slickPrev');
+                $('.game-carousel-mobile').slick('slickPrev')
             });
 
             $('.next').click(function() {
                 $('.game-carousel').slick('slickNext');
+                $('.game-carousel-mobile').slick('slickNext')
             });
 
             $('input#game_description').characterCounter();
@@ -70,6 +74,8 @@
             $('.tooltipped').tooltip();
 
             $('.modal').modal();
+            
+            $('.dropdown-trigger').dropdown();
 
             $('#add-game').click(formValidationGame);
 
