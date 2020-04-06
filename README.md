@@ -8,8 +8,8 @@ amount of games to peruse and to find out about games they may not have played b
 stored as collections in a MongoDB database.
 
 ### UX
-![Wireframe1](/README-images/wireframe1.jpg)
-![Wireframe2](/README-images/wireframe2.jpg)
+![Wireframe1](/README-images/wireframe1.jpg =100x20)
+![Wireframe2](/README-images/wireframe2.jpg =100x40)
 * As a user who owns a board game which is not already in the library, I would want to add my board game to the library to increase the number of games available
 to view and to allow other users to leave reviews for the game to find out what other people think about it.
 * As a board game enthusiast, I would want to leave reviews on games in the library to help other users know whether a particular board game is good or not.
