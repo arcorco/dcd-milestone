@@ -8,8 +8,8 @@ amount of games to peruse and to find out about games they may not have played b
 stored as collections in a MongoDB database.
 
 ### UX
-![Wireframe1](/README-images/wireframe1.jpg =100x20)
-![Wireframe2](/README-images/wireframe2.jpg =100x40)
+![Wireframe1](/README-images/wireframe1.jpg)
+![Wireframe2](/README-images/wireframe2.jpg)
 * As a user who owns a board game which is not already in the library, I would want to add my board game to the library to increase the number of games available
 to view and to allow other users to leave reviews for the game to find out what other people think about it.
 * As a board game enthusiast, I would want to leave reviews on games in the library to help other users know whether a particular board game is good or not.
@@ -62,7 +62,8 @@ information page if the game is in the library, or shown an error message if the
 
 ### Testing
 The website was tested extensivley through many different means. MongoDB was used to check which key, values pairs were being added and updated to documents
-in the database. This allowed me to ensure that with each form filled out on the website, there were no stray values being added. All of the forms in the website
+in the database. This allowed me to ensure that with each form filled out on the website, there were no stray values being added. The aggregation section in MongoDb
+when viewing the collections was especially helpful in figuring how best to sort and filter the collections. All of the forms in the website
 are validated via JavaScript code (credit: [Form Validation Using JavaScript](https://www.formget.com/form-validation-using-javascript/)), ensuring that no fields
 may be left empty (except for the "Add Image" field when a user is adding a game, as a default image will be used instead if they don't upload one) and a user 
 cannot fill a field in with characters if it must be filled in with numbers. I also carried out a lot of manual testing on the website, for example:
@@ -70,8 +71,8 @@ cannot fill a field in with characters if it must be filled in with numbers. I a
 1. Add a review from a game page (e.g. Monopoly)
     1. Go to a games information page, either via the carousel on the home page (find Monopoly and click the "VIEW GAME INFORMATION AND REVIEWS" button), or the directory under "All Games" (find Monopoly and click the "REVIEWS" button).
     2. Now directed to the Add Review page, the Game Name field is already selected with Monopoly
-    3. Try to submit the form, error occurs and the message "Please input a Review" is shown
-    4. Fill in a review, try to submit form, error occurs and the message "Please choose a Rating out of 5" is shown
+    3. Try to submit the form, error occurs and the message "Please input a Review" is shown beneath the Review field
+    4. Fill in a review, try to submit form, error occurs and the message "Please choose a Rating out of 5" is shown beneath the Rating field
     5. Choose a rating out of 5 and submit form. No error occurs. 
     6. View the game page for Monopoly and see that the "Average Rating" for the game has been updated, and the new review can now be seen.
 
@@ -82,6 +83,19 @@ cannot fill a field in with characters if it must be filled in with numbers. I a
     4. If the user clicks "DON"T DELETE" this modal disappears and the user is still on the game's information page
     5. If the user clicks delete, they are redirected to the All Games directory page and the game they deleted is no longer there
     
+3. Add a game
+    1. Click on the Add Game button on the nav bar
+    2. The user is directed to the Add Game form with all fields empty
+    3. Try to submit the form, error occurs and the message "Please input a Game Name" is shown beneath the Game Name field
+    4. Fill in a game name in the Game Name field and try to submit the form, error occurs and the message "Please input a Description" is shown beneath the Game Description field
+    5. Fill in a description in the Game Description field and try to submit the form, error occurs and the message "Please input a Manufacturer" is shown beneath the Manufacturer field
+    6. Fill in a manufacturer in the Manufacturer field and try to submit the from, error occurs and the message "Please input numbers only" is shown beneath the Minimum Number of Players field
+    7. Write "two" and "four" in the Minimum Number of Players and Maximum Number of player fields respectively and try to submit the from, error occurs and the message "Please input numbers only" is shown beneath the Minimum Number of Player field
+    8. Input "2" and "four" in the Minimum Number of Players and Maximum Number of player fields respectively and try to submit the form, error occurs and the message "Please input numbers only" is shown beneath the Minimum Number of Player field
+    9. Input "2" and "4" in the Minimum Number of Players and Maximum Number of player fields respectively and try to submit the form, error occurs and the message "Please input numbers only. If the game has no recommended minimum age, please input 0" is shown beneath the Minimum Age field
+    10. Input "ten" in the Minimum Age field and try to submit the form, error occurs and the message "Please input numbers only. If the game has no recommended minimum age, please input 0" is shown beneath the Minimum Age field
+    11. Input "10" in the Minimum Age field and try to submit the form
+    12. Form submitted successfully (whether an image is uploaded or not) and the game can be seen under the All Games tab and in the carousel on the home page
 
 The responsiveness of the website on different viewport widths was tested throughout with Developer Tools and the element style section was used to make any alterations to the layout before
 changing my style.css file. The website has also been tested on Safari, Chrome and Firefox and the deployed version has been tested on MacBook and iPhone X.
