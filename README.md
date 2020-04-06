@@ -8,6 +8,7 @@ amount of games to peruse and to find out about games they may not have played b
 stored as collections in a MongoDB database.
 
 ### UX
+For the project I drew wireframes out on paper beforehand. Here are the images of the wireframes.
 ![Wireframe1](/README-images/wireframe1.jpg)
 ![Wireframe2](/README-images/wireframe2.jpg)
 * As a user who owns a board game which is not already in the library, I would want to add my board game to the library to increase the number of games available
