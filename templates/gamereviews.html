@@ -52,7 +52,7 @@
     <div class="row buttons">
         <div class="col s6 m4">
             <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="sort-by-reviews">Sort by<i class="material-icons right">arrow_drop_down</i></a>
-            <ul id="sort-by-reviews" class="dropdown-content">
+            <ul id="sort-by-reviews" class="dropdown-content dropdown">
                 <li><a href="{{url_for('recent_review', game_name=game.game_name)}}">Most Recent</a></li>
                 <li><a href="{{url_for('highest_review', game_name=game.game_name)}}">Highest Rating Top</a></li>
                 <li><a href="{{url_for('lowest_review', game_name=game.game_name)}}">Lowest Rating Top</a></li>
@@ -60,7 +60,7 @@
         </div>
         <div class="col s6 m4">
             <a class="btn dropdown-trigger purple darken-3" href="#" data-activates="filter-reviews">Filter by<i class="material-icons right">arrow_drop_down</i></a>
-            <ul id="filter-reviews" class="dropdown-content">
+            <ul id="filter-reviews" class="dropdown-content dropdown">
                 <li><a href="{{url_for('rating1', game_name=game.game_name)}}">1 Star Reviews</a></li>
                 <li><a href="{{url_for('rating2', game_name=game.game_name)}}">2 Star Reviews</a></li>
                 <li><a href="{{url_for('rating3', game_name=game.game_name)}}">3 Star Reviews</a></li>
