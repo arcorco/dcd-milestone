@@ -18,7 +18,7 @@
         </ul>
     </div>
     <div class="col s12 m4 all-games">
-        <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn purple darken-3">All Games</a>
+        <a href="{{url_for('get_games')}}" class="waves-effect waves-light btn purple darken-3">RESET</a>
     </div>
 </div>
 {% for game in games %}
@@ -31,9 +31,9 @@
         </div>
         <div class="col s4">
             {% if game.game_image_name == "" %}
-            <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
+            <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" alt="Chess board default image" width="350"></img>
             {% else %}
-            <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
+            <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" alt="Image of game" width="350"></img>
             {% endif %}
         </div>
         <div class="col s4">
@@ -78,7 +78,7 @@
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">DON'T DELETE</a>
     </div>
 </div>
-{% endfor %} {% set rewind = games.rewind() %} {% for game in games %}
+
 <div class="purple lighten-4 game-div hide-on-large-only center-align">
     <div class="divider"></div>
     <div class="row">
@@ -87,9 +87,9 @@
     </div>
     <div class="row">
         {% if game.game_image_name == "" %}
-        <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
+        <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" alt="Chess board default image" width="350"></img>
         {% else %}
-        <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
+        <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" alt="Image of game" width="350"></img>
         {% endif %}
     </div>
     <div class="row">
@@ -116,4 +116,5 @@
         </div>
     </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock %}

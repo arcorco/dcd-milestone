@@ -24,9 +24,9 @@
                     <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
                     <p>{{game.game_description}}</p>
                     {% if game.game_image_name == "" %}
-                    <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="250"></img>
+                    <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" alt="Chess board default image" width="250"></img>
                     {% else %}
-                    <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="250"></img>
+                    <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" alt="Image of game" width="250"></img>
                     <p></p>
                     {% endif %}
                     <div class="row game-info">
@@ -49,9 +49,9 @@
                 <h5 class="rating"><i class="material-icons">star</i>Average rating: {{game.avg_rating}}/5<i class="material-icons">star</i></h5>
                 <p>{{game.game_description}}</p>
                 {% if game.game_image_name == "" %}
-                <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" width="350"></img>
+                <img src="/static/images/Chess-Board-Set-Up.jpg" class="materialbox game-image" alt="Chess board default image" width="350"></img>
                 {% else %}
-                <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" width="350"></img>
+                <img src="{{url_for('file', filename=game.game_image_name)}}" class="materialbox game-image" alt="Image of game" width="350"></img>
                 <p></p>
                 {% endif %}
                 <div class="row game-info">
